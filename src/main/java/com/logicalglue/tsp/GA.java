@@ -94,6 +94,95 @@ public class GA {
     }
 
 
+/*    public void promoteElitistToNextGeneration(Population newPopulation) {
+        Tour newGenerationFittest = newPopulation.getFittest();
+
+        if (newGenerationFittest.getDistance() < bestEverDistance) {
+            setBestEver(newGenerationFittest);
+        } else {
+            newPopulation.saveTour(0, bestEverTour);
+        }
+    }
+
+
+    // Evolves a population over one generation
+    public Population evolvePopulation_2(Population pop) {
+        Population newPopulation = new Population(pop.populationSize(), false);
+
+        double sumOfAllFitness = 0;
+
+        for (int i = 0; i < pop.populationSize(); i++) {
+            sumOfAllFitness += pop.getTour(i)
+                                  .getFitness();
+        }
+
+        // Crossover population
+        // Loop over the new population's size and create individuals from
+        // Current population
+        for (int i = 0; i < newPopulation.populationSize(); i++) {
+            // Select parents
+            // Few times select this generation's fittest as one parent,
+            // and other parent by fitness probability
+            Tour parent1 = null;
+            Tour parent2 = null;
+
+            if (Math.random() < 0.1) {
+                parent1 = pop.getFittest();
+            } else {
+                parent1 = selectParentByFitnessProbability(pop, sumOfAllFitness);
+            }
+
+            if (Math.random() < 0.1) {
+                parent2 = pop.getFittest();
+            } else {
+                parent2 = selectParentByFitnessProbability(pop, sumOfAllFitness);
+            }
+
+            // Crossover parents
+            Tour child = crossover(parent1, parent2);
+            // Add child to new population
+            newPopulation.saveTour(i, child);
+        }
+
+        // Mutate the new population a bit to add some new genetic material
+        for (int i = 0; i < newPopulation.populationSize(); i++) {
+            mutate(newPopulation.getTour(i));
+        }
+
+        promoteElitistToNextGeneration(newPopulation);
+
+        return newPopulation;
+    }
+
+
+    *//**
+     * Select a potential parent based on fitness (higher the fitness,
+     * higher the probability of picking it)
+     *
+     * @param population      {@link Population} instance
+     * @param sumOfAllFitness Sum of population fitness
+     * @return Member from the given population selected by it's fitness probability
+     * @see <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection">
+     * Fitness proportionate selection</a>
+     *//*
+    public Tour selectParentByFitnessProbability(Population population,
+                                                 double sumOfAllFitness) {
+        double probability = Utils.randomProbability(sumOfAllFitness);
+
+        for (int i = 0; i < population.populationSize(); i++) {
+            Tour currentTour = population.getTour(i);
+
+            if (probability < currentTour.getFitness()) {
+                return currentTour;
+            }
+
+            probability -= currentTour.getFitness();
+        }
+
+        return selectParentByFitnessProbability(population, sumOfAllFitness);
+    }*/
+
+
     /**
      * Applies crossover to a set of parents and creates offspring
      */
